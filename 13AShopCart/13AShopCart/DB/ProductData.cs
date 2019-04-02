@@ -7,7 +7,7 @@ using System.Data.SqlClient;
 
 namespace _13AShopCart.DB
 {
-    public class ProductData
+    public class ProductData : Data
     {
         public static List<Product> GetProductByProductId (int ProductId)
         {

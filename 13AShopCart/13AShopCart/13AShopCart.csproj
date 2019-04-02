@@ -132,13 +132,14 @@
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\PurchasesController.cs" />
     <Compile Include="DB\Data.cs" />
+    <Compile Include="DB\ProductData.cs" />
     <Compile Include="DB\UserData.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\ActivationCode.cs" />
     <Compile Include="Models\Cart.cs" />
-    <Compile Include="Models\LogIn.cs" />
+    <Compile Include="Models\Login.cs" />
     <Compile Include="Models\Product.cs" />
     <Compile Include="Models\PurchasedHistory.cs" />
     <Compile Include="Models\User.cs" />
