@@ -132,16 +132,15 @@
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\PurchasesController.cs" />
     <Compile Include="DB\Data.cs" />
-    <Compile Include="DB\PurchaseData.cs" />
     <Compile Include="DB\UserData.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\ActivationCode.cs" />
     <Compile Include="Models\Cart.cs" />
-    <Compile Include="Models\Login.cs" />
+    <Compile Include="Models\LogIn.cs" />
     <Compile Include="Models\Product.cs" />
-    <Compile Include="Models\Purchase.cs" />
+    <Compile Include="Models\PurchasedHistory.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -181,12 +180,12 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Login\LoginView.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Views\Cart\" />
     <Folder Include="Views\Gallery\" />
+    <Folder Include="Views\Login\" />
     <Folder Include="Views\Purchases\" />
   </ItemGroup>
   <ItemGroup>
