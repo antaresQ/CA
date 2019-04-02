@@ -7,7 +7,8 @@ namespace _13AShopCart.Models
 {
     public class ActivationCode
     {
-        public string ProductID { get; set; }
-        public string ActCode { get; set; }
+        public int ProductID { get; set; }
+        public string Code { get; set; }
+        public int PurchaseId { get; set; }
     }
 }

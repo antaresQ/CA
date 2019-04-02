@@ -126,8 +126,11 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\CartController.cs" />
+    <Compile Include="Controllers\GalleryController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\PurchasesController.cs" />
     <Compile Include="DB\Data.cs" />
     <Compile Include="DB\UserData.cs" />
     <Compile Include="Global.asax.cs">
@@ -135,6 +138,7 @@
     </Compile>
     <Compile Include="Models\ActivationCode.cs" />
     <Compile Include="Models\Cart.cs" />
+    <Compile Include="Models\LogIn.cs" />
     <Compile Include="Models\Product.cs" />
     <Compile Include="Models\PurchasedHistory.cs" />
     <Compile Include="Models\User.cs" />
@@ -179,7 +183,10 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Cart\" />
+    <Folder Include="Views\Gallery\" />
     <Folder Include="Views\Login\" />
+    <Folder Include="Views\Purchases\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
