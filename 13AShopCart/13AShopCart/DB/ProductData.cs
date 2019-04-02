@@ -9,6 +9,40 @@ namespace _13AShopCart.DB
 {
     public class ProductData : Data
     {
+        public static List<Product> GetProducts()
+        {
+            List<Product> products = new List<Product>();
+
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+
+                string sql = @"SELECT *
+                                FROM Product";
+
+                SqlCommand cmd = new SqlCommand(sql, conn);
+
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    Product product = new Product()
+                    {
+                        Id = (int)reader["ProductId"],
+                        Name = (string)reader["ProductName"],
+                        Description = (string)reader["Description"],
+                        Price = (float)reader["Price"],
+                        Qty = (int)reader["Qty"]
+
+                    };
+
+                    products.Add(product);
+                }
+            }
+
+            return products;
+        }
+
         public static List<Product> GetProductByProductId (int ProductId)
         {
             List<Product> products = new List<Product>();
@@ -43,5 +77,6 @@ namespace _13AShopCart.DB
 
             return products;
         }
+
     }
 }
