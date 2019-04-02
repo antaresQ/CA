@@ -27,11 +27,39 @@ namespace _13AShopCart.DB
                 {
                     user = new User()
                     {
-                        Id = (int)reader["Id"],
+                        UserID = (int)reader["Id"],
                         Password = (string)reader["Password"]
                     };
                 }
             }
+            return user;
+        }
+
+        public static User GetUserBySessionId(string SessionId)
+        {
+            User user = null;
+
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+
+                string q = @"SELECT User.UserId, User.Firstname, 
+                    User.Lastname, FROM User,
+                           AND User.SessionId = '" + SessionId + "'";
+
+                SqlCommand cmd = new SqlCommand(q, conn);
+                SqlDataReader reader = cmd.ExecuteReader();
+                if (reader.Read())
+                {
+                    user = new User()
+                    {
+                        UserID = (int)reader["UserId"],
+                        FirstName = (string)reader["FirstName"],
+                        LastName = (string)reader["LastName"],
+                    };
+                }
+            }
+
             return user;
         }
     }
