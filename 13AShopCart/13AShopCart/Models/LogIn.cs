@@ -6,7 +6,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace _13AShopCart.Models
 {
-    public class LogIn
+    public class Login
     {
         [Required(ErrorMessage = "Username is required")]
         public string Username { get; set; }
