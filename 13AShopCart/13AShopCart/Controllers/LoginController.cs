@@ -21,6 +21,9 @@ namespace _13AShopCart.Controllers
             User user = UserData.GetUserByUserUsername(Username);
             if (user.Password != Password)
                 return View();
+
+            string sessionId = SessionData.CreateSession(user.Id);
+            return RedirectToAction("ViewClass", "Class", new { sessionId });
         }
     }
 }
