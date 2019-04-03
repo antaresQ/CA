@@ -1,17 +1,17 @@
-﻿
-@{
-    ViewBag.Title = "GalleryView";
+﻿@{
+    ViewBag.Title = "Index";
 }
 
 @using _13AShopCart.Models;
+@using System.Web.MVC;
 
 <h2>GalleryView</h2>
 
-@{
-    List<Product> products = (List<Product>) ViewData["products"];
-    double itemCount = (double) ViewData["itemCount"];
-    double rows = (double)ViewData["rows"];
 
+@{
+    List<Product> products = (List<Product>)ViewData["products"];
+    double itemCount = (double)ViewData["itemCount"];
+    double rows = (double)ViewData["rows"];
 
     <table>
         @for (int i = 1; i <= rows; i++)
@@ -23,10 +23,11 @@
                     <td>
                         @if (j < itemCount)
                         {
-                            <p align="center" style="font-weight: bold" >@products[j].Name</p>
+                            <p align="center" style="font-weight: bold">@products[j].Name</p>
                             <p>@products[j].Description</p>
                             <p align="center">@products[j].Price</p>
-                            <p align="center"><input type="button" value="Add to Cart" onclick="location.href='@Url.Action("Gallery", "Add")'" /></p>
+                            <p alignt="center">@Html.ActionLink("Add to Cart", "Add", "Gallery", new {Id = products[j].Id}, null)</p>
+                            //<p align="center"><input type="button" value="Add to Cart" onclick="location.href='@Url.Action("Gallery", "Add")'" /></p>
                         }
 
                         else
@@ -39,7 +40,9 @@
     </table>
 
     <style>
-        th tr td {padding:10px}
+        th tr td {
+            padding: 10px
+        }
     </style>
 
 }

@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using _13AShopCart.Models;
 using _13AShopCart.DB;
+using _13AShopCart.Controllers;
 
 namespace _13AShopCart.Controllers
 {
@@ -14,12 +15,12 @@ namespace _13AShopCart.Controllers
 
         public ActionResult Index()
         {
-            List<Product> products = ProductData.GetProducts();
+            List<Product> items = ProductData.GetProducts();
 
             string sessionId = Guid.NewGuid().ToString();
             string cartId = Guid.NewGuid().ToString();
 
-            double itemCount = products.Count;
+            double itemCount = items.Count;
             double rows = Math.Ceiling(itemCount / 3);
 
             ViewData["itemCount"] = itemCount;
@@ -27,15 +28,16 @@ namespace _13AShopCart.Controllers
 
             ViewData["sessionId"] = sessionId;
             ViewData["cartId"] = cartId;
-            ViewData["products"] = products;
+            ViewData["products"] = items;
 
             return View();
         }
 
-        public ActionResult Add()
+        public ActionResult Add(int Id)
         {
-
-            return View();
+            Product item = ProductData.GetProductByProductId(Id);
+            
+            return RedirectToAction("Cart", "Add");
         }
     }
 }
