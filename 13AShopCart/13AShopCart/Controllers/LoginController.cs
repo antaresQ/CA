@@ -15,15 +15,20 @@ namespace _13AShopCart.Controllers
         // GET: Login
         public ActionResult Index(string Username, string Password)
         {
-            if (Username == null)
-                return View();
+            if (Username == null) return View();
 
-            User user = UserData.GetUserByUserUsername(Username);
+            User user = UserData.GetUserByUsername(Username);
+            if (user == null) return View();
             if (user.Password != Password)
                 return View();
 
-            string sessionId = SessionData.CreateSession(user.Id);
-            return RedirectToAction("ViewClass", "Class", new { sessionId });
+            string sessionId = SessionData.CreateSession(user.UserId);
+            return RedirectToAction("Products", "Login", new { sessionId });
+        }
+
+        public ActionResult Products()
+        {
+            return View();
         }
     }
 }
