@@ -19,6 +19,12 @@ namespace _13AShopCart.Controllers
             string sessionId = Guid.NewGuid().ToString();
             string cartId = Guid.NewGuid().ToString();
 
+            double itemCount = products.Count;
+            double rows = Math.Ceiling(itemCount / 3);
+
+            ViewData["itemCount"] = itemCount;
+            ViewData["rows"] = rows;
+
             ViewData["sessionId"] = sessionId;
             ViewData["cartId"] = cartId;
             ViewData["products"] = products;
