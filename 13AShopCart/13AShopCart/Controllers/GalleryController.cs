@@ -31,5 +31,11 @@ namespace _13AShopCart.Controllers
 
             return View();
         }
+
+        public ActionResult Add()
+        {
+
+            return View();
+        }
     }
 }
