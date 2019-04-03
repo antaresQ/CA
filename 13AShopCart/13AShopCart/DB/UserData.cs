@@ -18,8 +18,8 @@ namespace _13AShopCart.DB
             {
                 conn.Open();
 
-                string sql = @"SELECT Id, Username, Password from User
-                             WHERE FirstName = '" + username + "'";
+                string sql = @"SELECT UserId, Username, Password from User1
+                             WHERE Username = '" + username + "'";
                 SqlCommand cmd = new SqlCommand(sql, conn);
 
                 SqlDataReader reader = cmd.ExecuteReader();
@@ -27,7 +27,7 @@ namespace _13AShopCart.DB
                 {
                     user = new User()
                     {
-                        UserId = (int)reader["Id"],
+                        UserId = (int)reader["UserId"],
                         Password = (string)reader["Password"]
                     };
                 }
