@@ -16,9 +16,12 @@ namespace _13AShopCart.Controllers
 
         public ActionResult Index(string sessionId, int? cartId)
         {
-            if (sessionId == null)
+            Session["browserSession"] = HttpContext.Session.SessionID;
+            if (sessionId == null)  //if(sessionId == null)
             {
                 sessionId = Guid.NewGuid().ToString();
+                //Session["sessionId"] = HttpContext.Session.SessionID;
+                //sessionId = Session["sessionId"].ToString();
             }
 
             List<Product> items = ProductData.GetProducts();
