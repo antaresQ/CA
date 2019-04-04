@@ -1,0 +1,41 @@
+﻿@using _13AShopCart.Models
+
+@{
+    ViewBag.Title = "PurchaseHistory";
+}
+
+<h1 align="left">My Purchase</h1>
+
+@{
+    var sessionId = ViewData["sessionId"];
+    var results = (List<Purchase>)ViewData["purchases"];
+}
+
+@foreach (var result in ViewData["purchases"] as List<Purchase> )
+{
+<table>
+    
+    <tr>
+        <td><img src="~/Images/ISS.jpg" /></td>
+        <td>Purchased On: @result.Date</td>
+
+    </tr>
+
+    <tr>
+        <td>ProductName</td>
+        <td>Quantity: @result.Qty</td>
+
+    </tr>
+
+    <tr>
+        <td>ProductDes</td>
+        <td>Activation Code: @result.Code</td>
+        
+    </tr>
+
+    <tr>
+        <td>Download</td>
+        
+    </tr>
+</table>
+}
