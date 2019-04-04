@@ -18,8 +18,8 @@ namespace _13AShopCart.DB
             {
                 conn.Open();
 
-                string sql = @"SELECT Product.URL as ImageURL, Product.Id as ProductId, Product.Name as ProductName, Product.Description as ProductDescription, 
-                                Product.Price as ProductPrice, Product.Quantity as ProductQty
+                string sql = @"SELECT Product.ProductImage as ImageURL, Product.Id as ProductId, Product.Name as ProductName, Product.Description as ProductDescription, 
+                                Product.Price as ProductPrice
                                 FROM Product";
 
                 SqlCommand cmd = new SqlCommand(sql, conn);
@@ -34,8 +34,7 @@ namespace _13AShopCart.DB
                         Id = (int)reader["ProductId"],
                         Name = (string)reader["ProductName"],
                         Description = (string)reader["ProductDescription"],
-                        Price = (double)reader["ProductPrice"],
-                        Qty = (int)reader["ProductQty"]
+                        Price = (double)reader["ProductPrice"]
 
                     };
 
