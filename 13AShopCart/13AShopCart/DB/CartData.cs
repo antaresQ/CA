@@ -4,10 +4,9 @@ using System.Linq;
 using System.Web;
 
 using System.Data.SqlClient;
-using Cart.DB;
-using Cart.Models;
-namespace Cart.DB
-{
+using _13AShopCart.DB;
+using _13AShopCart.Models;
+
     public class CartData : Data
     {
         public static bool IsActiveSessionId(string sessionId)
@@ -105,4 +104,4 @@ namespace Cart.DB
         }
 
     }
-}
+

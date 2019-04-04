@@ -4,11 +4,10 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-using Cart.Models;
-using Cart.DB;
+using _13AShopCart.Models;
+using _13AShopCart.DB;
 
-namespace Cart.Controllers
-{
+
     public class CartController : Controller
     {
         // GET: Cart
@@ -50,4 +49,3 @@ namespace Cart.Controllers
             return View();
         }
     }
-}

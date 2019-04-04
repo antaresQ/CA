@@ -144,6 +144,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\PurchasesController.cs" />
+    <Compile Include="DB\CartData.cs" />
     <Compile Include="DB\Data.cs" />
     <Compile Include="DB\ProductData.cs" />
     <Compile Include="DB\PurchaseData.cs" />
