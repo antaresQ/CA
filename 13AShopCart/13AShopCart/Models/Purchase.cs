@@ -9,9 +9,10 @@ namespace _13AShopCart.Models
     {
         public int PurchaseId { get; set; }
         public int UserId { get; set; }
-        public DateTime Date { get; set; }
+        public Int64 Date { get; set; }
         public int ProductId { get; set; }
         public int Qty { get; set; }
+        public string Code { get; set; }
 
     }
 }
