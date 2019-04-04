@@ -5,7 +5,9 @@
 @using _13AShopCart.Models;
 @using System.Web.MVC;
 
-<h2>GalleryView</h2>
+<h2>Products</h2>
+<p></p>
+<p></p>
 
 
 @{
@@ -20,19 +22,19 @@
             <tr>
                 @for (int j = k; j < (k + 3); j++)
                 {
-                    <td>
-                        @if (j < itemCount)
-                        {
-                            <p align="center" style="font-weight: bold">@products[j].Name</p>
-                            <p>@products[j].Description</p>
-                            <p align="center">@products[j].Price</p>
-                            <p alignt="center">@Html.ActionLink("Add to Cart", "Add", "Gallery", new {Id = products[j].Id}, null)</p>
-                            //<p align="center"><input type="button" value="Add to Cart" onclick="location.href='@Url.Action("Gallery", "Add")'" /></p>
-                        }
+                <td>
+                    @if (j < itemCount)
+                    {
+                        <p align="center"><img width="100" height="100" src="@products[j].ImageURL" /></p>
+                        <p align="center" style="font-weight: bold">@products[j].Name</p>
+                        <p aligh="left">@products[j].Description</p>
+                        <p align="center">$@products[j].Price.00</p>
+                        <p align="center">@Html.ActionLink("Add to Cart", "Add", "Gallery", new { Id = products[j].Id }, null)</p>
+                    }
 
-                        else
-                        { break; }
-                    </td>
+                    else
+                    { break; }
+                </td>
                 }
             </tr>
         }
@@ -40,8 +42,8 @@
     </table>
 
     <style>
-        th tr td {
-            padding: 10px
+        tr, td {
+            padding: 15px
         }
     </style>
 
