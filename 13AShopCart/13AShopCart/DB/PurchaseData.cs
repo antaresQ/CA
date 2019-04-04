@@ -17,7 +17,10 @@ namespace _13AShopCart.DB
             {
                 conn.Open();
 
-                string sql = @"SELECT * FROM Purchase";
+                string sql = @"SELECT Purchase.PurchaseId as PurchaseId, Purchase.UserId as UserId,
+                                        Purchase.Date as Date, Purchase.ProductId as ProductId,
+                                        Purchase.Quantity as Qty, Purchase.Code as Code
+                                        FROM Purchase";
 
                 SqlCommand cmd = new SqlCommand(sql, conn);
 
@@ -29,9 +32,10 @@ namespace _13AShopCart.DB
                     {
                         PurchaseId = (int)reader["PurchaseId"],
                         UserId = (int)reader["UserId"],
-                        Date = (DateTime)reader["Date"],
+                        Date = (Int64)reader["Date"],
                         ProductId = (int)reader["ProductId"],
                         Qty = (int)reader["Qty"],
+                        Code = (string)reader["Code"]
                     };
                     purchases.Add(purchase);
                 };
