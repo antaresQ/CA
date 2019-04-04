@@ -23,21 +23,21 @@ using _13AShopCart.DB;
             ViewData["Items"] = items;
             return View();
         }*/
-        /*public ActionResult ViewCart(List<CartItem> cartItems)
+        public ActionResult ViewCart()
         {
-            List<CartItem> items = CartItem.SetCart(cartItems);
+            List<CartItem> items = CartData.SetCart();
 
             ViewData["Items"] = items;
             return View();
-        }*/
+        }
 
-        public ActionResult ViewCart(int cartID)
+        /*public ActionResult ViewCart(int cartID)
         {
             List<CartItem> items = CartData.GetCartDetailsByCartId(cartID);
 
             ViewData["Items"] = items;
             return View();
-        }
+        }*/
         public ActionResult Checkout(int cartID)
         {
             List<CartItem> items = CartData.GetCartDetailsByCartId(cartID);

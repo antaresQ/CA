@@ -22,9 +22,9 @@ using _13AShopCart.Models;
             }
         }
 
-        public static List<CartItem> SetCart(List<CartItem> cartItems)
+        public static List<CartItem> SetCart()
         {
-            List<CartItem> cartitems = new List<CartItem>();
+        List<CartItem> cartitems = new List<CartItem>();
 
             CartItem c1 = new CartItem();
             c1.ProductId = 101;

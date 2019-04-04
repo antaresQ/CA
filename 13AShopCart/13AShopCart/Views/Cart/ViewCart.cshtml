@@ -1,4 +1,4 @@
-﻿@using Cart.Models;
+﻿@using _13AShopCart.Models;
 
 <h2>ViewCart</h2>
 @{
@@ -47,7 +47,7 @@
 				<td> Qty : </td>
 				<td> <input id="@item.ProductId" type="number" min="0" value="@item.Qty"> </td>
 			</tr>
-			@result= @result+(item.Price * item.Qty);
+			//@result= @result+(item.Price * item.Qty);
 		}
 	}
 </table>
