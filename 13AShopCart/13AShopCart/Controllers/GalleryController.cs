@@ -12,14 +12,16 @@ namespace _13AShopCart.Controllers
     public class GalleryController : Controller
     {
         // GET: Gallery
+        int cartId;
 
-        public ActionResult Index()
+        public ActionResult Index(string sessionId, int? cartId)
         {
+            if (sessionId == null)
+            {
+                sessionId = Guid.NewGuid().ToString();
+            }
+
             List<Product> items = ProductData.GetProducts();
-
-            string sessionId = Guid.NewGuid().ToString();
-            string cartId = Guid.NewGuid().ToString();
-
             double itemCount = items.Count;
             double rows = Math.Ceiling(itemCount / 3);
 
@@ -33,11 +35,20 @@ namespace _13AShopCart.Controllers
             return View();
         }
 
-        public ActionResult Add(int Id)
+
+
+        public ActionResult ViewCart()
         {
-            Product item = ProductData.GetProductByProductId(Id);
-            
-            return RedirectToAction("Cart", "Add");
+
+            return RedirectToAction("Cart", "ViewCart");
+        }
+
+        public ActionResult Add(int ProductId, int? cartId, string sessionId)
+        {
+            cartId = CartData.AddtoCart(ProductId, cartId);
+
+
+            return RedirectToAction("Index", new {sessionId = sessionId, cartId = cartId});
         }
     }
 }

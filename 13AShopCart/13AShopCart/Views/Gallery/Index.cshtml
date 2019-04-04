@@ -5,6 +5,7 @@
 @using _13AShopCart.Models;
 @using System.Web.MVC;
 
+
 <h2>Products</h2>
 <p></p>
 <p></p>
@@ -14,37 +15,58 @@
     List<Product> products = (List<Product>)ViewData["products"];
     double itemCount = (double)ViewData["itemCount"];
     double rows = (double)ViewData["rows"];
+    string sessionId = (string)ViewData["sessionId"];
+    int? cartId = (int?)ViewData["cartId"];
 
-    <table>
-        @for (int i = 1; i <= rows; i++)
-        {
-            int k = (i - 1) * 3;
-            <tr>
-                @for (int j = k; j < (k + 3); j++)
-                {
-                <td>
-                    @if (j < itemCount)
+    @* Html.RenderPartial("_TopBar", new { sessionId = sessionId, cartId = cartId }); *@
+
+    <div class="navbar-collapse collapse">
+        <ul class="nav navbar-nav">
+            @*
+                <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                <li>@Html.ActionLink("About", "About", "Home")</li>
+                <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+            *@
+            <li>@Html.ActionLink("Gallery", "Index", new {sessionId = sessionId, cartId = cartId})</li>
+            <li>@Html.ActionLink("Purchase History", "GetPurchaseHistory", "Purchases")</li>
+            <li>@Html.ActionLink("Cart", "ViewCart", "Cart")</li>
+        </ul>
+    </div>
+
+    <div>
+        <table>
+            @for (int i = 1; i <= rows; i++)
+            {
+                int k = (i - 1) * 3;
+                <tr>
+                    @for (int j = k; j < (k + 3); j++)
                     {
-                        <p align="center"><img width="100" height="100" src="@products[j].ImageURL" /></p>
-                        <p align="center" style="font-weight: bold">@products[j].Name</p>
-                        <p aligh="left">@products[j].Description</p>
-                        <p align="center">$@products[j].Price.00</p>
-                        <p align="center">@Html.ActionLink("Add to Cart", "Add", "Gallery", new { Id = products[j].Id }, null)</p>
+                        <td>
+                            @if (j < itemCount)
+                            {
+                                <table id="1">
+                                    <p align="center"><img width="100" height="100" src="@products[j].ImageURL" /></p>
+                                    <p align="center" style="font-weight: bold">@products[j].Name</p>
+                                    <p aligh="left">@products[j].Description</p>
+                                    <p align="center">$@products[j].Price.00</p>
+                                    <p align="center">@Html.ActionLink("Add to Cart", "Add", "Gallery", new { productId = products[j].Id, cartId = cartId, sessionId = sessionId }, new { @class = "btn btn-primary", @style = "color:white" })</p>
+                                </table>
+                            }
+
+                            else
+                            { break; }
+                        </td>
                     }
+                </tr>
+            }
 
-                    else
-                    { break; }
-                </td>
-                }
-            </tr>
-        }
+        </table>
+        <input type="hidden" value="@sessionId" /><input type="hidden" value="@cartId" />
 
-    </table>
-
-    <style>
-        tr, td {
-            padding: 15px
-        }
-    </style>
-
+        <style>
+            tr, td {
+                padding: 15px
+            }
+        </style>
+    </div>
 }
