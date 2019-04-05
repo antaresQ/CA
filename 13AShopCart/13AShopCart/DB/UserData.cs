@@ -43,9 +43,9 @@ namespace _13AShopCart.DB
             {
                 conn.Open();
 
-                string q = @"SELECT User.UserId, User.Firstname, 
-                    User.Lastname, FROM User,
-                           AND User.SessionId = '" + SessionId + "'";
+                string q = @"SELECT User1.UserId, User1.Firstname, 
+                    User1.Lastname, FROM User1,
+                           AND User1.SessionId = '" + SessionId + "'";
 
                 SqlCommand cmd = new SqlCommand(q, conn);
                 SqlDataReader reader = cmd.ExecuteReader();
@@ -59,7 +59,6 @@ namespace _13AShopCart.DB
                     };
                 }
             }
-
             return user;
         }
     }

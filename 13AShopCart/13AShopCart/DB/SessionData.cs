@@ -42,7 +42,7 @@ namespace _13AShopCart.DB
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
                 conn.Open();
-                string sql = @"UPDATE User1 SET SessionId = NULL";
+                string sql = @"UPDATE User1 SET SessionId=NULL";
                 SqlCommand cmd = new SqlCommand(sql, conn);
                 cmd.ExecuteNonQuery();
             }

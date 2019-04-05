@@ -18,17 +18,27 @@
                     <span class="icon-bar"></span>
                 </button>
                 @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @if (sessionId == null)
+                {
+                    @Html.ActionLink("MVC Shop", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                }
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     @*
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+        <li>@Html.ActionLink("Home", "Index", "Home")</li>
+        <li>@Html.ActionLink("About", "About", "Home")</li>
+        <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
                     *@
                     <li>@Html.ActionLink("Gallery", "Index", "Gallery")</li>
                     <li>@Html.ActionLink("Purchase History", "GetPurchaseHistory", "Purchases")</li>
                     <li>@Html.ActionLink("Cart", "ViewCart", "Cart")</li>
+
+                    @if (sessionId != null)
+                    {
+                        <li>@Html.ActionLink("My Session", "Product", "Login", new { sessionId = @sessionId }, null)</li>
+                        <li>@Html.ActionLink("Logout", "Index", "Logout")</li>
+                    }
                 </ul>
             </div>
         </div>

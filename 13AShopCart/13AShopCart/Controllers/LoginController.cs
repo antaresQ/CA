@@ -20,7 +20,7 @@ namespace _13AShopCart.Controllers
             User user = UserData.GetUserByUsername(Username);
             if (user == null) return View();
             if (user.Password != Password)
-                return View();
+            return View();
 
             string sessionId = SessionData.CreateSession(user.UserId);
             return RedirectToAction("Products", "Login", new { sessionId });
