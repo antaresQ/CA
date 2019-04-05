@@ -6,6 +6,7 @@
 @using System.Web.MVC;
 
 
+
 <h2>Products</h2>
 <p></p>
 <p></p>
@@ -27,10 +28,25 @@
                 <li>@Html.ActionLink("About", "About", "Home")</li>
                 <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
             *@
-            <li>@Html.ActionLink("Gallery", "Index", new {sessionId = sessionId, cartId = cartId})</li>
+            <li>@Html.ActionLink("Gallery", "Index", new { sessionId = sessionId, cartId = cartId })</li>
             <li>@Html.ActionLink("Purchase History", "GetPurchaseHistory", "Purchases")</li>
             <li>@Html.ActionLink("Cart", "ViewCart", "Cart")</li>
         </ul>
+    </div>
+
+    @model _13AShopCart.Models.Product
+
+    <div>
+        @using (Html.BeginForm("Index", "Gallery", FormMethod.Post))
+        {
+            <table>
+                <tr>
+                    <td>@Html.TextBoxFor(x => x.Name, new { style = "width: 1000px;" })</td>
+                    <td colspan="2" align="right"><input type="submit" value="Search" placeholder="Search" /></td>
+
+                </tr>
+            </table>
+        }
     </div>
 
     <div>
@@ -62,11 +78,15 @@
 
         </table>
         <input type="hidden" value="@sessionId" /><input type="hidden" value="@cartId" />
+        <p>session Guid: @ViewData["sessionId"]</p>
+        <p>.NET session ID: @Session["browserSession"].ToString()</p>
 
         <style>
             tr, td {
                 padding: 15px
             }
         </style>
+
+
     </div>
 }

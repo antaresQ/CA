@@ -9,18 +9,30 @@ namespace _13AShopCart.DB
 {
     public class ProductData : Data
     {
-        public static List<Product> GetProducts()
+        public static List<Product> GetProducts(string searchText)
         {
             List<Product> products = new List<Product>();
             Product product = null;
 
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
+                string sql;
                 conn.Open();
 
-                string sql = @"SELECT Product.ProductImage as ImageURL, Product.Id as ProductId, Product.Name as ProductName, Product.Description as ProductDescription, 
+                if (searchText == null)
+                {
+                    sql = @"SELECT Product.ProductImage as ImageURL, Product.Id as ProductId, Product.Name as ProductName, Product.Description as ProductDescription, 
                                 Product.Price as ProductPrice
                                 FROM Product";
+                }
+
+                else
+                {
+                    sql = @"SELECT Product.ProductImage as ImageURL, Product.Id as ProductId, Product.Name as ProductName, Product.Description as ProductDescription, 
+                                Product.Price as ProductPrice
+                                FROM Product
+                                WHERE Product.Name LIKE '%" + searchText + @"%'";
+                }
 
                 SqlCommand cmd = new SqlCommand(sql, conn);
 
@@ -47,6 +59,7 @@ namespace _13AShopCart.DB
             return products;
 
         }
+
 
         public static Product GetProductByProductId (int ProductId, int id)
         {

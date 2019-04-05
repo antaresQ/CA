@@ -14,7 +14,7 @@ namespace _13AShopCart.Controllers
         // GET: Gallery
         int cartId;
 
-        public ActionResult Index(string sessionId, int? cartId)
+        public ActionResult Index(string sessionId, int? cartId, string Name)
         {
             Session["browserSession"] = HttpContext.Session.SessionID;
             if (sessionId == null)  //if(sessionId == null)
@@ -24,7 +24,7 @@ namespace _13AShopCart.Controllers
                 //sessionId = Session["sessionId"].ToString();
             }
 
-            List<Product> items = ProductData.GetProducts();
+            List<Product> items = ProductData.GetProducts(Name);
             double itemCount = items.Count;
             double rows = Math.Ceiling(itemCount / 3);
 
@@ -38,6 +38,30 @@ namespace _13AShopCart.Controllers
             return View();
         }
 
+
+        //public ActionResult Search(string sessionId, int? cartId, string searchText)
+        //{
+        //    Session["browserSession"] = HttpContext.Session.SessionID;
+        //    if (sessionId == null)  //if(sessionId == null)
+        //    {
+        //        sessionId = Guid.NewGuid().ToString();
+        //        //Session["sessionId"] = HttpContext.Session.SessionID;
+        //        //sessionId = Session["sessionId"].ToString();
+        //    }
+
+        //    List<Product> items = ProductData.SearchProducts(searchText);
+        //    double itemCount = items.Count;
+        //    double rows = Math.Ceiling(itemCount / 3);
+
+        //    ViewData["itemCount"] = itemCount;
+        //    ViewData["rows"] = rows;
+
+        //    ViewData["sessionId"] = sessionId;
+        //    ViewData["cartId"] = cartId;
+        //    ViewData["products"] = items;
+
+        //    return View("Index", new { sessionId = sessionId, cartId = cartId, searchText = searchText });
+        //}
 
 
         public ActionResult ViewCart()
