@@ -4,37 +4,86 @@
     ViewBag.Title = "PurchaseHistory";
 }
 
-<h1 align="left">My Purchase</h1>
+<div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <p style="font-size:2px">&nbsp;</p>
+            <p style="color :whitesmoke; font-size:20px" align="justify">@ViewBag.Title</p>
+            @*@Html.ActionLink("My Purchase", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })*@
+        </div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li>@Html.ActionLink("Home", "Gallery", "Index")</li>   @*@Html.ActionLink("text","action","controller")*@
+                <li>@Html.ActionLink("Logout", "Login", "Index")</li>
+                @*<li>@Html.ActionLink("Contact", "Contact", "Home")</li>*@
+            </ul>
+        </div>
+    </div>
+</div>
 
+@*<h2 align="left">My Purchase</h2>*@
+
+<p align ="center">&nbsp;<br /><br /></p>
 @{
     var sessionId = ViewData["sessionId"];
     var results = (List<Purchase>)ViewData["purchases"];
 }
+
+
+
+
 
 @foreach (var result in ViewData["purchases"] as List<Purchase> )
 {
 <table>
     
     <tr>
-        <td><img src="~/Images/ISS.jpg" /></td>
-        <td>Purchased On: @result.Date</td>
+        <td width=" 350px " align="center"  rowspan="2"><img src=@result.image style="width:100px;height:100px"></td>
+        <td width="550px" height="50px">Purchased On: @result.Date</td>
 
     </tr>
 
     <tr>
-        <td>ProductName</td>
-        <td>Quantity: @result.Qty</td>
+       
+        <td width="550px">Quantity: @result.Qty</td>
 
     </tr>
 
     <tr>
-        <td>ProductDes</td>
-        <td>Activation Code: @result.Code</td>
-        
-    </tr>
+        <td width=" 350px " align="center"><b>@result.Name</b></td>
+       
+        <td width="550px">
+            Activation Code:
+            @if (result.Qty > 1)
+            {
+                string code = result.ActivationCode;
+                var words = code.Split(',').ToList();
 
+                var selectItemList = new List<SelectListItem>();
+
+                var selectList = new SelectList(words, "ActivationCode");
+                selectItemList.AddRange(selectList);
+                ViewBag.database = selectItemList;
+
+                @Html.DropDownList("database-dropdownlist", ViewBag.database as IEnumerable<SelectListItem>, new { @class = "btn btn-success dropdown-toggle form-control" }) }
+
+            else
+            { @result.Code}
+        </td>
+
+
+    </tr>
     <tr>
-        <td>Download</td>
+        <td width=" 350px ">@result.Description</td>
+
+    </tr>
+    <tr>
+        <td width=" 350px"><a href="@result.URL">@result.URL</a></td>
         
     </tr>
 </table>
